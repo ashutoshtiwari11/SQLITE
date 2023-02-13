@@ -10,7 +10,7 @@ import sqlite3
 
 
 def show_all():
-   
+   #shows all the data in db.
     conn = sqlite3.connect('cusomer.db')
     c = conn.cursor()
     c.execute("SELECT rowid, * FROM customers")
@@ -20,7 +20,7 @@ def show_all():
     conn.close()
         
 def add_one():
-    
+    #add new data to db.
     first=input("ENTER NAME: ")
     last=input("ENTER Last Name: ")
     email=input("ENTER Email: ")
@@ -31,6 +31,7 @@ def add_one():
     conn.close()
         
 def delete_one():
+   #removes data from db.
     show_all()
     id=input('Enter row id to be deleted: \n--')
     conn = sqlite3.connect('cusomer.db')
@@ -40,7 +41,7 @@ def delete_one():
     conn.close()
  
 def add_many(list):
-    
+    #you cn add data in list format.
     conn = sqlite3.connect('cusomer.db')
     c=conn.cursor()
     c.executemany("INSERT INTO customers VALUES (?, ?, ?)", (list))
@@ -50,7 +51,7 @@ def add_many(list):
     conn.close()
     
 def email_lookup():
-    
+    #search database using name of user.
     conn = sqlite3.connect('cusomer.db')
     c=conn.cursor()
     name=input("ENTER NAME TO BE SEARCHED:  ")
